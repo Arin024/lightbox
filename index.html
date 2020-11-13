@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<button onclick="myFunct()">click</button>
+<body>
+    <h2 style="text-align: center;">Light-Box</h2>
+    <div class="row">
+        <div class="column">
+            <img src="twitter.jpg" style="width: 100%;" 
+            onclick="openModal(); currentSlide(1)" class="hover-shadow cursor">
+        </div>
+        <div class="column">
+            <img src="quora.png" style="width:100%"
+            onclick="openModal(); currentSlide(2)" class="hover-shadow cursor">
+        </div>
+        <div class="column">
+            <img src="linkedin.png" style="width:100%;"
+            onclick="openModal(); currentSlide(3)" class="hover-shadow cursor">
+        </div>
+    </div>
+    
+    <div id="myModal" class="modal">
+        <span class="close cursor" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <div class="mySlides">
+                <div class="numbertext">1/3</div>
+                <img src="twitter.jpg" style="width: 100%;">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">2/3</div>
+                <img src="quora.png" style="width: 100%;">
+            </div>
+            <div class="mySlides">
+                <div class="numbertext">3/3</div>
+                <img src="linkedin.png" style="width: 100%;">
+            </div>
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+            <div class="caption-container"></div>
+            <p id="caption"></p>
+            <div class="column">
+                <img class="demo cursor" src="twitter.jpg" style="width: 100%;" 
+                onclick=" currentSlide(1)">
+            </div>
+            <div class="column">
+                <img class="demo cursor" src="quora.png" style="width:100%"
+                onclick="currentSlide(2)">
+            </div>
+            <div class="column">
+                <img class="demo cursor" src="linkedin.png" style="width:100%;"
+                onclick=" currentSlide(3)">
+            </div>
+        </div>
+    </div>
+    <!--<div>
+        <form>
+            reg number:<br>
+            <input type="text" id="regNo" onblur="studentId();" onfocus="this.style.backgroundColor='red'"><br>
+            Student Name:<br>
+            <input type="text" id="name" onfocus="this.style.backgroundColor='blue';">
+        </form>
+    </div>-->
+    <!--<script src="app.js"></script>-->
+   <script>
+        function openModal(){
+            document.getElementById("myModal").style.display="block";
+        }
+        function closeModal(){
+            document.getElementById("myModal").style.display="none";
+        }
+        var slideIndex=1;
+        showSlides(slideIndex);
+
+        function plusSlides(n){
+        showSlides(slideIndex += n);
+        } 
+
+        function currentSlide(n){
+            showSlides(slideIndex = n)
+        };
+        function showSlides(n){
+            var i;
+            var slides=document.getElementsByClassName("mySlides");
+            var dots=document.getElementsByClassName("demo");
+            var captionText=document.getElementById("caption");
+            if (n > slides.length)
+            {slideIndex=1}
+            if (n <1) {slideIndex=slides.lenght}
+            for (i=0; i < slides.length; i++)
+            slides[i].style.display="none";
+
+            for (i=0; i < dots.length; i++) {
+                dots[i].className=dots[i].className.replace(".active","");
+            }
+            slides[slideIndex-1].style.display="block";
+            dots[slideIndex-1].className+="active";
+            captionText.innerHTML=dots[slideIndex-1].alt;
+
+        }
+
+        var MonkeyWindow=window.open();
+        var windowContent="they that do know their god shall be strong and do exploit";
+        MonkeyWindow=document.write(windowContent);
+
+
+
+    </script>
+</body>
+</html>
